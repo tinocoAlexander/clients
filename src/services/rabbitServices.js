@@ -10,11 +10,12 @@ const RABBITMQ_ROUTING_KEY = "user.created";
 export async function userCreatedEvent(user) {
   try {
     const connection = await amqp.connect({
-          protocol: 'amqp',
-          hostname: process.env.RABBITMQ_URL,
-          port: 5672,
-          username: process.env.RABBITMQ_USER,
-          password: process.env.RABBIT_PASS
+        protocol: 'amqps',
+        hostname: process.env.RABBITMQ_URL,
+        port: 5671,
+        username: process.env.RABBITMQ_USER,
+        password: process.env.RABBIT_PASS,
+        vhost: process.env.RABBITMQ_VHOST
         })
     const channel = await connection.createChannel();
 
