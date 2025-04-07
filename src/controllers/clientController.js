@@ -64,10 +64,10 @@ export const createClient = async (req, res) => {
     const existingUser = await User.findOne({ where: { username: mail } });
     if (!existingUser) {
       const defaultPassword = generateRandomPassword();
-      const defaultRole = await Role.findOne({ where: { roleName: "cliente" } });
+      const defaultRole = await Role.findOne({ where: { roleName: "client" } });
 
       if (!defaultRole) {
-        return res.status(500).json({ message: "No se encontró el rol predeterminado 'cliente'" });
+        return res.status(500).json({ message: "No se encontró el rol predeterminado 'client'" });
       }
 
       const newUser = await User.create({
